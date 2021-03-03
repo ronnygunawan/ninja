@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Ronny Gunawan</Authors>
+    <Copyright>(C) 2021 Ronny Gunawan</Copyright>
+    <PackageProjectUrl>https://github.com/ronnygunawan/ninja</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ronnygunawan/ninja</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>
