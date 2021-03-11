@@ -104,3 +104,34 @@ var foo = new Foo {
 // [4] = "Empat"
 // [5] = "Lima"
 ```
+
+### 4. Enumerable Range
+
+Range in foreach:
+
+```cs
+// 1 to 5
+foreach (int i in 1..5) {
+}
+
+// 0 to 5
+foreach (int i in ..5) {
+}
+
+// 0 to length-1
+foreach (int i in ..^length) {
+}
+```
+
+Range in LINQ:
+
+```cs
+// simple LINQ
+from i in ..^arr.length
+select arr[i]
+
+// complex LINQ: you need to explicitly specify 'int' as range variable type
+from int i in ..^arr.length
+where i % 2 == 0
+select arr[i]
+```
