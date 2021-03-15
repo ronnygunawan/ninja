@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RG.Ninja {
 	public static class CollectionExtensions {
@@ -7,5 +8,11 @@ namespace RG.Ninja {
 				collection.Add(item);
 			}
 		}
+
+#if !NETSTANDARD2_0
+		public static void Add(this ICollection<int> collection, Range range) {
+			collection.Add(range.AsEnumerable());
+		}
+#endif
 	}
 }

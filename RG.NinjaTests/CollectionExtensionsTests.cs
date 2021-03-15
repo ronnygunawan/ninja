@@ -16,6 +16,14 @@ namespace RG.NinjaTests {
 		}
 
 		[Fact]
+		public void CanUseRangeInCollectionInitializer() {
+			Dummy dummy = new() {
+				Items = { 1..3 }
+			};
+			dummy.Items.Should().ContainInOrder(1, 2, 3);
+		}
+
+		[Fact]
 		public void CanMixListAndValuesInCollectionInitializer() {
 			List<int> list = new() { 1, 2, 3 };
 			Dummy dummy = new() {

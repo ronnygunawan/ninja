@@ -34,6 +34,9 @@ Extension methods:
 class ICollection<T> {
     void Add(IEnumerable<T> items);
 }
+class ICollection<int> {
+    void Add(Range range);
+}
 ```
 
 Usage:
@@ -54,11 +57,13 @@ var foo = new Foo {
         from i in items // spread IEnumerable
         let j = 10 - i
         orderby j ascending
-        select j
+        select j,
+
+        10..12 // spread range
     }
 };
 
-// foo.Items: 1, 2, 3, 4, 5, 6, 7, 8, 9
+// foo.Items: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 ```
 
 ### 3. Spread operation in dictionary initializer
@@ -134,4 +139,18 @@ select arr[i]
 from int i in ..^arr.length
 where i % 2 == 0
 select arr[i]
+```
+
+### 5. Zip, Skip, and Take using Range
+
+```cs
+// i is index of item in list
+foreach ((string item, int i) in list.Zip(..)) {
+}
+
+// take elements at index 3 to 5
+var result = list.Take(3..5);
+
+// take all elements except those at index 3 to 5
+var result = list.Skip(3..5);
 ```
