@@ -1,9 +1,7 @@
 ﻿#if !NETSTANDARD2_0
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace RG.Ninja {
+namespace System.Linq {
 	public static class RangeEnumerableExtensions {
 		public static IEnumerable<int> AsEnumerable(this Range range) {
 			int start = range.Start.IsFromEnd

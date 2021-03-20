@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xunit;
-using RG.Ninja;
 using FluentAssertions;
 
 namespace RG.NinjaTests {
@@ -52,7 +51,7 @@ namespace RG.NinjaTests {
 			});
 		}
 
-		class Dummy {
+		private class Dummy {
 			public Dictionary<int, string> Items { get; } = new();
 		}
 	}

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using RG.Ninja;
 using Xunit;
 
 namespace RG.NinjaTests {

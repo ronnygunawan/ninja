@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
-namespace RG.Ninja {
+namespace System.Linq {
 	public static class EnumerableExtensions {
 		public static IEnumerable<(TSource Item, int Index)> WithIndex<TSource>(this IEnumerable<TSource> source) {
 			int i = 0;

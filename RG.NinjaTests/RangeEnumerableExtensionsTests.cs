@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xunit;
-using RG.Ninja;
 using FluentAssertions;
 using System.Linq;
 

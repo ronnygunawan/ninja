@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+#if !NETSTANDARD2_0
+using System.Linq;
+#endif
 
-namespace RG.Ninja {
+namespace System.Collections.Generic {
 	public static class CollectionExtensions {
 		public static void Add<T>(this ICollection<T> collection, IEnumerable<T> items) {
 			foreach (T item in items) {

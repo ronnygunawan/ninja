@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using RG.Ninja;
 using Xunit;
 
 namespace RG.NinjaTests {
@@ -42,7 +41,7 @@ namespace RG.NinjaTests {
 			);
 		}
 
-		class Dummy {
+		private class Dummy {
 			public List<int> Items { get; } = new();
 		}
 	}

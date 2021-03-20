@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace RG.Ninja {
+namespace System {
 	public static class StandardExtensions {
 		public static T Setup<T>(this T it, Action<T> setupAction) {
 			setupAction.Invoke(it);
