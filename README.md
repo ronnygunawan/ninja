@@ -154,3 +154,15 @@ var result = list.Take(3..5);
 // take all elements except those at index 3 to 5
 var result = list.Skip(3..5);
 ```
+
+### 6. One&lt;T&gt; and Qlosure&lt;T&gt;
+
+Taken from [ronnygunawan/one](https://github.com/ronnygunawan/one) repo. It allows you to use LINQ expression to write JS closure-like or F# pipeline-like expression:
+
+```cs
+decimal total = from decimal price in 199m
+                let tax = price * 0.1m
+                let subtotal = price + tax
+                let discount = 10m
+                select subtotal - discount;
+```
