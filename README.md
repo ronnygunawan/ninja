@@ -3,7 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/v/RG.Ninja.svg)](https://www.nuget.org/packages/RG.Ninja/) [![.NET](https://github.com/ronnygunawan/ninja/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ronnygunawan/ninja/actions/workflows/dotnet.yml)
 
 ## List of Available Jutsu:
-### 1. Fluent anything
+### 1. Fluent everything
 
 ```cs
 obj.Setup(o => { ... });
