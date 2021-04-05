@@ -5,18 +5,14 @@
 ## List of Available Jutsu:
 ### 1. Fluent anything
 
-Extension methods:
-
 ```cs
-class T {
-    T Setup<T>(Action<T> setupAction);
-    Task<T> SetupAsync<T>(Func<T, Task> asyncSetupAction);
-    TResult Let<T, TResult>(Func<T, TResult> selector);
-    Task<TResult> LetAsync(Func<T, Task<TResult>> asyncSelector);
-}
+obj.Setup(o => { ... });
+obj.SetupAsync(async o => { ... });
+obj.Let(o => { ... return something; });
+obj.LetAsync(async o => { ... return something; });
 ```
 
-Usage:
+Example:
 
 ```cs
 var button = new Button {
@@ -28,18 +24,14 @@ var button = new Button {
 
 ### 2. Spread operation in collection initializer
 
-Extension methods:
+You can 'spread' IEnumerable and Range in collection initializer:
 
 ```cs
-class ICollection<T> {
-    void Add(IEnumerable<T> items);
-}
-class ICollection<int> {
-    void Add(Range range);
-}
+var obj = new Foo { Items = { someEnumerable } };
+var obj = new Foo { Items = { 0..n } };
 ```
 
-Usage:
+Example:
 
 ```cs
 record Foo {
@@ -68,14 +60,10 @@ var foo = new Foo {
 
 ### 3. Spread operation in dictionary initializer
 
-Extension methods:
-
 ```cs
-class IDictionary<TKey, TValue> {
-    void Add(IEnumerable<KeyValuePair<TKey, TValue>> items);
-    void Add(IEnumerable<TValue> values, Func<TValue, TKey> keySelector);
-    void Add<TSource>(IEnumerable<TSource> items, Func<TSource, TKey> keySelector, Func<TSource, TValue> elementSelector);
-}
+var obj = new Foo { Dictionary = { someDictionary } };
+var obj = new Foo { Dictionary = { someCollection, item => item.Id } }; // with key selector
+var obj = new Foo { Dictionary = { someCollection, item => item.Id, item => item.Text } }; // with key and value selector
 ```
 
 Usage:
