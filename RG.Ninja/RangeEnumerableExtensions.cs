@@ -4,13 +4,9 @@ using System.Collections.Generic;
 namespace System.Linq {
 	public static class RangeEnumerableExtensions {
 		public static IEnumerable<int> AsEnumerable(this Range range) {
-			int start = range.Start.IsFromEnd
-				? range.Start.Value + 1
-				: range.Start.Value;
-			int end = range.End.IsFromEnd
-				? range.End.Value - 1
-				: range.End.Value;
-			for (int i = start; i <= end; i++) {
+			if (range.Start.IsFromEnd) throw new InvalidOperationException("IsFromEnd is not allowed.");
+			if (range.End.IsFromEnd) throw new InvalidOperationException("IsFromEnd is not allowed.");
+			for (int i = range.Start.Value; i < range.End.Value; i++) {
 				yield return i;
 			}
 		}

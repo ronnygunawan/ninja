@@ -33,7 +33,7 @@ namespace System.Linq {
 					: source.Count();
 			int start = range.Start.GetOffset(count);
 			int end = range.End.GetOffset(count);
-			return source.Skip(start).SkipLast(count - end - 1);
+			return source.Skip(start).SkipLast(count - end);
 		}
 #endif
 

@@ -51,7 +51,7 @@ var foo = new Foo {
         orderby j ascending
         select j,
 
-        10..12 // spread range
+        10..13 // spread range
     }
 };
 
@@ -103,16 +103,16 @@ var foo = new Foo {
 Range in foreach:
 
 ```cs
-// 1 to 5
+// 1 to 4
 foreach (int i in 1..5) {
 }
 
-// 0 to 5
+// 0 to 4
 foreach (int i in ..5) {
 }
 
 // 0 to length-1
-foreach (int i in ..^length) {
+foreach (int i in ..length) {
 }
 ```
 
@@ -120,11 +120,11 @@ Range in LINQ:
 
 ```cs
 // simple LINQ
-from i in ..^arr.length
+from i in ..arr.length
 select arr[i]
 
 // complex LINQ: you need to explicitly specify 'int' as range variable type
-from int i in ..^arr.length
+from int i in ..arr.length
 where i % 2 == 0
 select arr[i]
 ```
@@ -136,10 +136,10 @@ select arr[i]
 foreach ((string item, int i) in list.Zip(..)) {
 }
 
-// take elements at index 3 to 5
+// take elements at index 3 and 4
 var result = list.Take(3..5);
 
-// take all elements except those at index 3 to 5
+// take all elements except those at index 3 and 4
 var result = list.Skip(3..5);
 ```
 

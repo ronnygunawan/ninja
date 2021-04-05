@@ -19,7 +19,7 @@ namespace RG.NinjaTests {
 			Dummy dummy = new() {
 				Items = { 1..3 }
 			};
-			dummy.Items.Should().ContainInOrder(1, 2, 3);
+			dummy.Items.Should().ContainInOrder(1, 2);
 		}
 
 		[Fact]

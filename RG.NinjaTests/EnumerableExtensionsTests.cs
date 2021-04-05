@@ -32,11 +32,19 @@ namespace RG.NinjaTests {
 			result.Should().ContainInOrder("alpha", "beta", "gamma");
 			result = items.Take(1..).ToList();
 			result.Should().ContainInOrder("beta", "gamma");
+			result = items.ToArray()[1..].ToList();
+			result.Should().ContainInOrder("beta", "gamma");
 			result = items.Take(^1..).ToList();
 			result.Should().ContainInOrder("gamma");
+			result = items.ToArray()[^1..].ToList();
+			result.Should().ContainInOrder("gamma");
 			result = items.Take(..1).ToList();
-			result.Should().ContainInOrder("alpha", "beta");
+			result.Should().ContainInOrder("alpha");
+			result = items.ToArray()[..1].ToList();
+			result.Should().ContainInOrder("alpha");
 			result = items.Take(..^2).ToList();
+			result.Should().ContainInOrder("alpha");
+			result = items.ToArray()[..^2].ToList();
 			result.Should().ContainInOrder("alpha");
 		}
 
@@ -50,10 +58,10 @@ namespace RG.NinjaTests {
 			result = items.Skip(^1..).ToList();
 			result.Should().ContainInOrder("alpha", "beta");
 			result = items.Skip(..1).ToList();
-			result.Should().ContainInOrder("gamma");
+			result.Should().ContainInOrder("beta", "gamma");
 			result = items.Skip(..^2).ToList();
 			result.Should().ContainInOrder("beta", "gamma");
-			result = items.Skip(1..1).ToList();
+			result = items.Skip(1..2).ToList();
 			result.Should().ContainInOrder("alpha", "gamma");
 		}
 	}
