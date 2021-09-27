@@ -9,7 +9,7 @@ namespace System.Linq {
 			}
 		}
 
-#if !NETSTANDARD2_0
+#if NETCOREAPP3_1_OR_GREATER
 		public static IEnumerable<(TSource Item, int Index)> Zip<TSource>(this IEnumerable<TSource> source, Range range) {
 			int count = source is IReadOnlyCollection<TSource> readonlyCollection
 				? readonlyCollection.Count
@@ -24,7 +24,7 @@ namespace System.Linq {
 		}
 #endif
 
-#if !NETSTANDARD2_0
+#if NETCOREAPP3_1_OR_GREATER
 		public static IEnumerable<TSource> Take<TSource>(this IEnumerable<TSource> source, Range range) {
 			int count = source is IReadOnlyCollection<TSource> readonlyCollection
 				? readonlyCollection.Count
@@ -37,7 +37,7 @@ namespace System.Linq {
 		}
 #endif
 
-#if !NETSTANDARD2_0
+#if NETCOREAPP3_1_OR_GREATER
 		public static IEnumerable<TSource> Skip<TSource>(this IEnumerable<TSource> source, Range range) {
 			int count = source is IReadOnlyCollection<TSource> readonlyCollection
 				? readonlyCollection.Count

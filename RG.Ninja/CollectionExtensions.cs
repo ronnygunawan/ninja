@@ -1,4 +1,4 @@
-#if !NETSTANDARD2_0
+﻿#if NETCOREAPP3_1_OR_GREATER
 using System.Linq;
 #endif
 
@@ -10,7 +10,7 @@ namespace System.Collections.Generic {
 			}
 		}
 
-#if !NETSTANDARD2_0
+#if NETCOREAPP3_1_OR_GREATER
 		public static void Add(this ICollection<int> collection, Range range) {
 			collection.Add(range.AsEnumerable());
 		}
