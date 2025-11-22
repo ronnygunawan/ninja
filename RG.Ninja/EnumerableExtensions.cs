@@ -24,7 +24,7 @@ namespace System.Linq {
 		}
 #endif
 
-#if NETCOREAPP3_1_OR_GREATER
+#if NETCOREAPP3_1_OR_GREATER && !NET9_0_OR_GREATER
 		public static IEnumerable<TSource> Take<TSource>(this IEnumerable<TSource> source, Range range) {
 			int count = source is IReadOnlyCollection<TSource> readonlyCollection
 				? readonlyCollection.Count

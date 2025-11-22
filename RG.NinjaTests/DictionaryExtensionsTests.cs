@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Xunit;
-using FluentAssertions;
+using Shouldly;
 
 namespace RG.NinjaTests {
 	public class DictionaryExtensionsTests {
@@ -13,9 +13,8 @@ namespace RG.NinjaTests {
 			Dummy dummy = new() {
 				Items = { dictionary }
 			};
-			dummy.Items.Should().Contain(new Dictionary<int, string> {
-				{ 1, "Satu" }, { 2, "Dua" }
-			});
+			dummy.Items.ShouldContainKeyAndValue(1, "Satu");
+			dummy.Items.ShouldContainKeyAndValue(2, "Dua");
 		}
 
 		[Fact]
@@ -27,10 +26,10 @@ namespace RG.NinjaTests {
 					{ values, v => v.Length - 2, v => v + v }
 				}
 			};
-			dummy.Items.Should().Contain(new Dictionary<int, string> {
-				{ 4, "Satu" }, { 3, "Dua" },
-				{ 2, "SatuSatu" }, { 1, "DuaDua" }
-			});
+			dummy.Items.ShouldContainKeyAndValue(4, "Satu");
+			dummy.Items.ShouldContainKeyAndValue(3, "Dua");
+			dummy.Items.ShouldContainKeyAndValue(2, "SatuSatu");
+			dummy.Items.ShouldContainKeyAndValue(1, "DuaDua");
 		}
 
 		[Fact]
@@ -45,10 +44,9 @@ namespace RG.NinjaTests {
 					{ 3, "Tiga" }
 				}
 			};
-			dummy.Items.Should().Contain(new Dictionary<int, string> {
-				{ 1, "Satu" }, { 2, "Dua" },
-				{ 3, "Tiga" }
-			});
+			dummy.Items.ShouldContainKeyAndValue(1, "Satu");
+			dummy.Items.ShouldContainKeyAndValue(2, "Dua");
+			dummy.Items.ShouldContainKeyAndValue(3, "Tiga");
 		}
 
 		private class Dummy {
