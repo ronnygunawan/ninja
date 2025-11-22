@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
+using Shouldly;
 using Xunit;
 
 namespace RG.NinjaTests {
@@ -9,60 +9,60 @@ namespace RG.NinjaTests {
 		public void CanZipIndexUsingWithIndexMethod() {
 			List<string> items = new() { "alpha", "beta", "gamma" };
 			List<(string Item, int Index)> result = items.WithIndex().ToList();
-			result.Should().ContainInOrder(("alpha", 0), ("beta", 1), ("gamma", 2));
+			result.ShouldBe(new[] { ("alpha", 0), ("beta", 1), ("gamma", 2) }, ignoreOrder: false);
 		}
 
 		[Fact]
 		public void CanZipIndexUsingRange() {
 			List<string> items = new() { "alpha", "beta", "gamma" };
 			List<(string Item, int Index)> result = items.Zip(..).ToList();
-			result.Should().ContainInOrder(("alpha", 0), ("beta", 1), ("gamma", 2));
+			result.ShouldBe(new[] { ("alpha", 0), ("beta", 1), ("gamma", 2) }, ignoreOrder: false);
 
 			result = items.Zip(..^1).ToList();
-			result.Should().ContainInOrder(("alpha", 0), ("beta", 1));
+			result.ShouldBe(new[] { ("alpha", 0), ("beta", 1) }, ignoreOrder: false);
 
 			result = items.Zip(^1..).ToList();
-			result.Should().ContainInOrder(("alpha", 2));
+			result.ShouldBe(new[] { ("alpha", 2) }, ignoreOrder: false);
 		}
 
 		[Fact]
 		public void CanTakeUsingRange() {
 			List<string> items = new() { "alpha", "beta", "gamma" };
 			List<string> result = items.Take(..).ToList();
-			result.Should().ContainInOrder("alpha", "beta", "gamma");
+			result.ShouldBe(new[] { "alpha", "beta", "gamma" }, ignoreOrder: false);
 			result = items.Take(1..).ToList();
-			result.Should().ContainInOrder("beta", "gamma");
+			result.ShouldBe(new[] { "beta", "gamma" }, ignoreOrder: false);
 			result = items.ToArray()[1..].ToList();
-			result.Should().ContainInOrder("beta", "gamma");
+			result.ShouldBe(new[] { "beta", "gamma" }, ignoreOrder: false);
 			result = items.Take(^1..).ToList();
-			result.Should().ContainInOrder("gamma");
+			result.ShouldBe(new[] { "gamma" }, ignoreOrder: false);
 			result = items.ToArray()[^1..].ToList();
-			result.Should().ContainInOrder("gamma");
+			result.ShouldBe(new[] { "gamma" }, ignoreOrder: false);
 			result = items.Take(..1).ToList();
-			result.Should().ContainInOrder("alpha");
+			result.ShouldBe(new[] { "alpha" }, ignoreOrder: false);
 			result = items.ToArray()[..1].ToList();
-			result.Should().ContainInOrder("alpha");
+			result.ShouldBe(new[] { "alpha" }, ignoreOrder: false);
 			result = items.Take(..^2).ToList();
-			result.Should().ContainInOrder("alpha");
+			result.ShouldBe(new[] { "alpha" }, ignoreOrder: false);
 			result = items.ToArray()[..^2].ToList();
-			result.Should().ContainInOrder("alpha");
+			result.ShouldBe(new[] { "alpha" }, ignoreOrder: false);
 		}
 
 		[Fact]
 		public void CanSkipUsingRange() {
 			List<string> items = new() { "alpha", "beta", "gamma" };
 			List<string> result = items.Skip(..).ToList();
-			result.Should().ContainInOrder();
+			result.ShouldBeEmpty();
 			result = items.Skip(1..).ToList();
-			result.Should().ContainInOrder("alpha");
+			result.ShouldBe(new[] { "alpha" }, ignoreOrder: false);
 			result = items.Skip(^1..).ToList();
-			result.Should().ContainInOrder("alpha", "beta");
+			result.ShouldBe(new[] { "alpha", "beta" }, ignoreOrder: false);
 			result = items.Skip(..1).ToList();
-			result.Should().ContainInOrder("beta", "gamma");
+			result.ShouldBe(new[] { "beta", "gamma" }, ignoreOrder: false);
 			result = items.Skip(..^2).ToList();
-			result.Should().ContainInOrder("beta", "gamma");
+			result.ShouldBe(new[] { "beta", "gamma" }, ignoreOrder: false);
 			result = items.Skip(1..2).ToList();
-			result.Should().ContainInOrder("alpha", "gamma");
+			result.ShouldBe(new[] { "alpha", "gamma" }, ignoreOrder: false);
 		}
 	}
 }

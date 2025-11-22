@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
+using Shouldly;
 using Xunit;
 
 namespace RG.NinjaTests {
@@ -11,7 +11,7 @@ namespace RG.NinjaTests {
 			Dummy dummy = new() {
 				Items = { list }
 			};
-			dummy.Items.Should().ContainInOrder(1, 2, 3);
+			dummy.Items.ShouldBe(new[] { 1, 2, 3 }, ignoreOrder: false);
 		}
 
 		[Fact]
@@ -19,7 +19,7 @@ namespace RG.NinjaTests {
 			Dummy dummy = new() {
 				Items = { 1..3 }
 			};
-			dummy.Items.Should().ContainInOrder(1, 2);
+			dummy.Items.ShouldBe(new[] { 1, 2 }, ignoreOrder: false);
 		}
 
 		[Fact]
@@ -34,11 +34,11 @@ namespace RG.NinjaTests {
 					select i + 7
 				}
 			};
-			dummy.Items.Should().ContainInOrder(
+			dummy.Items.ShouldBe(new[] {
 				1, 2, 3,
 				4, 5, 6,
 				7, 9, 11, 13, 15
-			);
+			}, ignoreOrder: false);
 		}
 
 		private class Dummy {
